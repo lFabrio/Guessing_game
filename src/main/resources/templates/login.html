@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing game</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <form action="/login" th:object="${request}" method="post">
+        <h4>What's your name?</h4>
+        <input type="text" th:field="${request.username}" placeholder="Input your name">
+        <button type="submit" name="login">Start game</button>
+    </form>
+
+    <td th:if="${errors != null}">
+        <tr th:each="error : ${errors}">
+    <td th:text="${error.field}"></td>
+    <td th:text="${error.message}"></td>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    background-color: lightblue;
+}
+
+button {
+    margin-top: 10px;
+    border: 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s
+}
+
+button:hover {
+    background-color: rgb(190, 190, 190);
+}
+
+input {
+    width: 20%;
+    max-width: 120px;
+    border-radius: 5px;
+    border: 2px;
+}
+
+input[type = "number"] {
+    width: 20%;
+    margin-top: 5px
+}
+
+.container {
+    max-width: 1200px;
+    width: 90%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+
+    h1 {
+        font-size: 18px;
+    }
+
+    h4 {
+        font-size: 16px;
+    }
+
+    .container {
+        font-size: 14px;
+    }
+
+    input {
+        width: 45%;
+    }
+
+    button {
+        width: 50%;
+    }
+}

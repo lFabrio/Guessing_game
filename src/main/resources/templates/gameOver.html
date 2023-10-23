@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing game</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="container">
+    <h1>Game Over!</h1>
+    <p th:text="${username} + ', ' + ${gameResult}"></p>
+    <p th:text="'Secret number: ' + ${secretNumber}"></p>
+
+    <form action="/" method="get">
+        <p></p>
+        <button type="submit">Go to main page</button>
+    </form>
+</div>
+</body>
+</html>

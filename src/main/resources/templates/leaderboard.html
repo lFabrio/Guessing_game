@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing game</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="container">
+    <h3>Input minimum games played to show the leaderboard</h3>
+
+    <form action="/leaderboard" th:object="${request}" method="post">
+        <input type="number" th:field="${request.gamesPlayed}">
+        <button type="submit">Show</button>
+    </form>
+
+    <p th:if="${errors}" th:each="error : ${errors}" th:text="${error.message}"></p>
+
+    <div th:if="${leaderboard}">
+        <h4>Leaderboard:</h4>
+        <p th:each="player, count : ${leaderboard}"
+        th:text="${count.index + 1} + '. ' + ${player.username}
+        + ',  score: ' + ${player.score}
+        + ',  games count: ' + ${player.gamesPlayed}">
+        </p>
+    </div>
+
+    <form action="/" method="get">
+        <p></p>
+        <button type="submit">Go to main page</button>
+    </form>
+</div>
+</body>
+
+</html>

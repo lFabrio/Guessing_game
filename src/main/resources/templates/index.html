@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/XSL/Transform">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing game</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Hello, my dream team!</h1>
+    <p></p>
+    <h4>Guessing Game rules:</h4>
+    <p>Program chooses a random secret number with 4 digits.</p>
+    <p>All digits in the secret number are different.</p>
+    <p>Player has 8 tries to guess the secret number.</p>
+
+    <form th:if="${loggedIn}" action="/game" method="get">
+        <h4>Hello, <span th:text="${username}"></span></h4>
+        <div th:if="${unfinishedGameExists}">
+            <p></p>
+            <p>Unfinished game found.</p>
+            <p>If you want to start a new game,</p>
+            <p>unfinished game will be counted as defeat!</p>
+            <button type="submit">Resume game</button>
+            <button type="submit" name="restart">New Game</button>
+        </div>
+        <button th:if="${not unfinishedGameExists}" type="submit">New Game</button>
+    </form>
+
+    <form th:if="${not loggedIn}" action="/login" method="get">
+        <button type="submit">Let's start</button>
+    </form>
+
+    <form action="/leaderboard" method="get">
+        <button type="submit">Go to leaderboard</button>
+    </form>
+
+    <form th:if="${loggedIn}" action="/login" method="get">
+        <button type="submit" name="logout">Log out</button>
+    </form>
+
+</div>
+
+</body>
+</html>

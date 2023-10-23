@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing game</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+<h1>Hello, <span th:text="${username}"></span></h1>
+
+<h4>Make Your Guess:</h4>
+<form th:object="${request}" th:action="@{/game}" method="post">
+    <input type="number" placeholder="Digit one" min="0" max="9" id="digitOne"/>
+    <input type="number" placeholder="Digit two" min="0" max="9" id="digitTwo"/>
+    <input type="number" placeholder="Digit three" min="0" max="9" id="digitThree"/>
+    <input type="number" placeholder="Digit four" min="0" max="9" id="digitFour"/>
+
+    <input type="hidden" th:field="${request.number}" id="combinedGuess"/>
+
+    <button type="submit" onclick="combineInputs()">Make turn</button>
+</form>
+
+    <p></p>
+    <p th:if="${triesLeft}" th:text="'Tries left: ' + ${triesLeft}"></p>
+    <p th:if="${lastGuess}" th:text="'Last guess: ' + ${lastGuess}"></p>
+    <p th:if="${errors}" th:each="error : ${errors}" th:text="${error.message}"></p>
+
+<div th:if="${gameResult}">
+    <h4>Result:</h4>
+    <p th:text="${gameResult}"></p>
+</div>
+
+<div th:if="${turns}">
+    <h4>Turns Log:</h4>
+    <p th:each="turn, count : ${turns}" th:text="${count.index + 1} + '. ' + ${turn}"></p>
+</div>
+
+<form action="/" method="get">
+    <p></p>
+    <button type="submit">Go to main page</button>
+</form>
+</div>
+<script src="/js/script.js"></script>
+</body>
+</html>
